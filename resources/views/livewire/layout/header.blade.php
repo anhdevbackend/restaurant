@@ -390,7 +390,7 @@
                                                 </a>
                                             </div>
                                             <div class="relative flex">
-                                                <a href="/contact"
+                                                <a href="{{ route('contact') }}"
                                                     class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px">
                                                     Liên hệ
                                                 </a>
@@ -431,7 +431,7 @@
                                                             type="button">
                                                             <span class="sr-only">Open user menu</span>
                                                             <img class="w-8 h-8 rounded-full object-cover"
-                                                                src="{{ asset('profile_photos/' . Auth::user()->profile_photo_path) }}"
+                                                                src="{{ asset(Auth::user()->profile_photo_path) }}"
                                                                 alt="user photo">
                                                         </button>
                                                     </div>
@@ -456,10 +456,10 @@
                                                                 </div>
                                                                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                                                                     aria-labelledby="dropdownUserAvatarButton">
-                                                                    @if(Auth::user()->is_manager == 1)
+                                                                    @if(Auth::user()->is_staff == 1 ||Auth::user()->is_manager == 1)
                                                                     <li>
                                                                         <a href="{{ route('dashboard') }}"
-                                                                            class="block py-2 px-4 hover:bg-gray-100">Quản lý admin</a>
+                                                                            class="block py-2 px-4 hover:bg-gray-100">Trang Admin</a>
                                                                     </li>
                                                                     @endif
                                                                     <li>
@@ -554,7 +554,7 @@
                                                                     class="divide-y divide-gray-200 overflow-auto">
                                                                     @foreach ($cart as $item)
                                                                         <li class="py-6 flex">
-                                                                            <img src="{{ asset('images/products/' . $item->options['image']) }}"
+                                                                            <img src="{{ asset('storage/upload/' . $item->options['image']) }}"
                                                                                 alt="{{ $item->image }}"
                                                                                 class="flex-none h-16 w-16 rounded-md border border-gray-200 object-cover object-center">
                                                                             <div
